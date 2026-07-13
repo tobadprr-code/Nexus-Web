@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background-color: #07080a;
+  color: #f2f4f2;
+}
+
+body {
+  cursor: default;
+}
+
+::selection {
+  background: #00ff9d;
+  color: #07080a;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #07080a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1d222b;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff9d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #00ff9d;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation-name: marquee-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--marquee-duration, 30s);
+}
+.marquee-track.marquee-reverse {
+  animation-direction: reverse;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* signature diagonal slash divider — echoes the NEXUS mark */
+.slash-divider {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #1d222b 20%, #1d222b 80%, transparent);
+}
+.slash-divider::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -7px;
+  width: 28px;
+  height: 14px;
+  background: #00ff9d;
+  clip-path: polygon(30% 0, 100% 0, 70% 100%, 0 100%);
+  box-shadow: 0 0 16px 2px rgba(0, 255, 157, 0.55);
+  transform: translateX(-50%);
+}
+
+.grid-fade {
+  background-image: linear-gradient(to right, #ffffff09 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff09 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 90%);
+}
+
+.glass-panel {
+  background: rgba(12, 14, 20, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
