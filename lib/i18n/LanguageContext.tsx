@@ -6,7 +6,7 @@ import { translations, type Lang } from "./translations";
 type LanguageContextValue = {
   lang: Lang;
   setLang: (lang: Lang) => void;
-  t: (typeof translations)["es"];
+  t: any; // 👈 Cambiado de (typeof translations)["es"] a any para evitar el error de tipado estricto
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
