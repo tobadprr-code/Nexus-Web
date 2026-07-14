@@ -30,7 +30,7 @@ export default function Process() {
         </motion.div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {p.steps.map((step, i) => {
+          {p?.steps?.map((step: any, i: number) => {
             const Icon = ICONS[i % ICONS.length];
             return (
               <motion.div
