@@ -21,20 +21,20 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
           >
-            <SectionTag>{a?.tag}</SectionTag>
+            <SectionTag>{a.tag}</SectionTag>
             <h2 className="text-balance font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
-              {a?.heading}
+              {a.heading}
             </h2>
-            <p className="mt-6 max-w-xl font-body text-ink-muted">{a?.p1}</p>
-            <p className="mt-4 max-w-xl font-body text-ink-muted">{a?.p2}</p>
+            <p className="mt-6 max-w-xl font-body text-ink-muted">{a.p1}</p>
+            <p className="mt-4 max-w-xl font-body text-ink-muted">{a.p2}</p>
           </motion.div>
 
           <div className="space-y-5">
-            {a?.pillars?.map((pillar: any, i: number) => {
+            {a.pillars.map((pillar, i) => {
               const Icon = ICONS[i % ICONS.length];
               return (
                 <motion.div
-                  key={pillar?.title || i}
+                  key={pillar.title}
                   initial={{ opacity: 0, x: 24 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
@@ -46,9 +46,9 @@ export default function About() {
                   </div>
                   <div>
                     <h3 className="font-display text-lg font-medium text-ink">
-                      {pillar?.title}
+                      {pillar.title}
                     </h3>
-                    <p className="mt-1.5 font-body text-sm text-ink-muted">{pillar?.text}</p>
+                    <p className="mt-1.5 font-body text-sm text-ink-muted">{pillar.text}</p>
                   </div>
                 </motion.div>
               );

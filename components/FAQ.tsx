@@ -28,7 +28,7 @@ export default function FAQ() {
         </motion.div>
 
         <div className="space-y-3">
-          {f?.items?.map((item: any, i: number) => {
+          {f.items.map((item, i) => {
             const isOpen = open === i;
             return (
               <motion.div

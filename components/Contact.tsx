@@ -94,7 +94,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="relative py-28 sm:py-36">
+    <section id="contacto" className="relative overflow-hidden py-28 sm:py-36">
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-nexus-green/[0.06] blur-[140px]"
         aria-hidden

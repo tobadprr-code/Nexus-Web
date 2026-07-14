@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Dumbbell, Car, Eye, type LucideIcon } from "lucide-react";
 import SectionTag from "./SectionTag";
@@ -87,64 +86,49 @@ function ProjectGrid({
             <TiltCard
               data-cursor-hover
               onClick={() => onSelect(project)}
-              className={`group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-300 hover:-translate-y-2 ${accent.border} ${accent.glow}`}
+              className={`group flex h-full cursor-pointer flex-col rounded-2xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-2 ${accent.border} ${accent.glow}`}
             >
-              {project.images[0] && (
-                <div className="relative h-44 w-full overflow-hidden border-b border-line bg-void">
-                  <Image
-                    src={project.images[0]}
-                    alt={project.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
+              <div className="flex items-center justify-between">
+                <div
+                  className={`flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-void ${accent.text}`}
+                >
+                  <project.icon size={22} strokeWidth={1.8} />
                 </div>
-              )}
-
-              <div className="flex flex-1 flex-col p-7">
-                <div className="flex items-center justify-between">
-                  <div
-                    className={`flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-void ${accent.text}`}
-                  >
-                    <project.icon size={22} strokeWidth={1.8} />
-                  </div>
-                  <span className="rounded-full border border-line bg-void px-2.5 py-1 font-mono text-[10px] text-ink-dim">
-                    {project.badge}
-                  </span>
-                </div>
-
-                <div className="mt-6 flex items-center justify-between gap-2">
-                  <p className={`font-mono text-xs ${accent.text}`}>{project.category}</p>
-                  <span
-                    className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[10px] font-medium ${project.statusColor}`}
-                  >
-                    {project.status}
-                  </span>
-                </div>
-                <h3 className="mt-2 font-display text-2xl font-medium text-ink">
-                  {project.name}
-                </h3>
-                <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-ink-muted">
-                  {project.description}
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {project.tech.map((tItem) => (
-                    <span
-                      key={tItem}
-                      className="rounded-full border border-line bg-void px-2.5 py-1 font-mono text-[11px] text-ink-muted"
-                    >
-                      {tItem}
-                    </span>
-                  ))}
-                </div>
-
-                <span className="mt-7 flex items-center gap-2 font-mono text-sm text-ink transition-colors group-hover:text-nexus-green">
-                  {viewCase}
-                  <ArrowUpRight size={14} />
+                <span className="rounded-full border border-line bg-void px-2.5 py-1 font-mono text-[10px] text-ink-dim">
+                  {project.badge}
                 </span>
               </div>
+
+              <div className="mt-6 flex items-center justify-between gap-2">
+                <p className={`font-mono text-xs ${accent.text}`}>{project.category}</p>
+                <span
+                  className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[10px] font-medium ${project.statusColor}`}
+                >
+                  {project.status}
+                </span>
+              </div>
+              <h3 className="mt-2 font-display text-2xl font-medium text-ink">
+                {project.name}
+              </h3>
+              <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-ink-muted">
+                {project.description}
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.tech.map((tItem) => (
+                  <span
+                    key={tItem}
+                    className="rounded-full border border-line bg-void px-2.5 py-1 font-mono text-[11px] text-ink-muted"
+                  >
+                    {tItem}
+                  </span>
+                ))}
+              </div>
+
+              <span className="mt-7 flex items-center gap-2 font-mono text-sm text-ink transition-colors group-hover:text-nexus-green">
+                {viewCase}
+                <ArrowUpRight size={14} />
+              </span>
             </TiltCard>
           </motion.div>
         );

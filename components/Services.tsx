@@ -42,7 +42,7 @@ export default function Services() {
   const s = t.services;
 
   return (
-    <section id="servicios" className="relative py-28 sm:py-36">
+    <section id="servicios" className="relative overflow-hidden py-28 sm:py-36">
       <div
         className="pointer-events-none absolute right-[8%] top-10 h-[280px] w-[280px] rounded-full bg-nexus-cyan/[0.05] blur-[110px]"
         aria-hidden

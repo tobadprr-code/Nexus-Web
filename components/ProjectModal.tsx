@@ -50,7 +50,7 @@ function ImageCarousel({ images, name }: { images: string[]; name: string }) {
               onClick={prev}
               data-cursor-hover
               aria-label="Imagen anterior"
-              className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-void/70 text-ink backdrop-blur transition-colors hover:bg-nexus-green hover:text-void"
+              className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-void/70 text-ink backdrop-blur transition-colors hover:bg-nexus-green hover:text-void"
             >
               <ChevronLeft size={18} />
             </button>
@@ -58,7 +58,7 @@ function ImageCarousel({ images, name }: { images: string[]; name: string }) {
               onClick={next}
               data-cursor-hover
               aria-label="Siguiente imagen"
-              className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-void/70 text-ink backdrop-blur transition-colors hover:bg-nexus-green hover:text-void"
+              className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-void/70 text-ink backdrop-blur transition-colors hover:bg-nexus-green hover:text-void"
             >
               <ChevronRight size={18} />
             </button>
@@ -125,7 +125,7 @@ export default function ProjectModal({
                 onClick={onClose}
                 data-cursor-hover
                 aria-label="Cerrar"
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-nexus-green hover:text-nexus-green"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-nexus-green hover:text-nexus-green"
               >
                 <X size={16} />
               </button>

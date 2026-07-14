@@ -46,7 +46,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-balance font-display text-[13vw] font-semibold leading-[0.95] tracking-tight text-ink sm:text-6xl lg:text-[4.4rem]"
+            className="text-balance font-display text-[clamp(2.25rem,10vw,3.75rem)] font-semibold leading-[0.95] tracking-tight text-ink sm:text-6xl lg:text-[4.4rem]"
           >
             {h.titlePre}{" "}
             <span className="relative inline-block">

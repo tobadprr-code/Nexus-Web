@@ -10,10 +10,13 @@ html,
 body {
   background-color: #07080a;
   color: #f2f4f2;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   cursor: default;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
@@ -132,4 +135,5 @@ textarea:focus-visible {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.06);
+  -webkit-overflow-scrolling: touch;
 }

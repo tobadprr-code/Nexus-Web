@@ -201,7 +201,7 @@ function LiveChat({
           type="submit"
           data-cursor-hover
           disabled={!input.trim() || typing}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-nexus-green to-nexus-cyan text-void transition-transform hover:scale-110 disabled:opacity-40"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-nexus-green to-nexus-cyan text-void transition-transform hover:scale-110 disabled:opacity-40"
           aria-label="Send"
         >
           <Send size={13} />
