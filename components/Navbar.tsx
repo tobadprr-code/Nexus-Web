@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
-import { WHATSAPP_URL } from "@/lib/constants";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -69,17 +67,7 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <LanguageSwitcher className="hidden sm:flex" />
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor-hover
-              className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-nexus-green to-nexus-cyan px-4 py-2 font-mono text-[13px] font-medium text-void transition-transform hover:scale-105 sm:flex"
-            >
-              <FaWhatsapp size={15} />
-              {t.nav.cta}
-            </a>
+            <LanguageSwitcher className="hidden sm:block" />
             <button
               onClick={() => setOpen(true)}
               data-cursor-hover
@@ -110,7 +98,7 @@ export default function Navbar() {
                 <X size={18} />
               </button>
             </div>
-            <div className="px-6 pt-2">
+            <div className="px-6 pt-2 sm:hidden">
               <LanguageSwitcher />
             </div>
             <nav className="flex flex-col gap-1 px-6 pt-6">
@@ -127,15 +115,6 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-nexus-green to-nexus-cyan px-5 py-3.5 font-mono text-sm font-medium text-void"
-              >
-                <FaWhatsapp size={16} />
-                {t.nav.cta}
-              </a>
             </nav>
           </motion.div>
         )}
