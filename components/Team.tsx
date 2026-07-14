@@ -6,8 +6,12 @@ import { FaWhatsapp, FaGithub } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import SectionTag from "./SectionTag";
 import { WHATSAPP_URL, GITHUB_URL, LOCATION, EMAIL } from "@/lib/constants";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Team() {
+  const { t } = useLanguage();
+  const team = t.team;
+
   return (
     <section id="equipo" className="relative py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-6">
@@ -18,9 +22,9 @@ export default function Team() {
           transition={{ duration: 0.6 }}
           className="mb-16 max-w-2xl"
         >
-          <SectionTag>Nuestro equipo</SectionTag>
+          <SectionTag>{team.tag}</SectionTag>
           <h2 className="text-balance font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
-            Una persona, un compromiso directo con cada proyecto
+            {team.heading}
           </h2>
         </motion.div>
 
@@ -45,7 +49,7 @@ export default function Team() {
           </div>
 
           <div>
-            <p className="font-mono text-xs text-nexus-green">Fundador & Desarrollador Full Stack Principal</p>
+            <p className="font-mono text-xs text-nexus-green">{team.role}</p>
             <h3 className="mt-2 font-display text-3xl font-semibold text-ink">
               Tobias Britez
             </h3>
@@ -53,18 +57,8 @@ export default function Team() {
               <MapPin size={13} />
               {LOCATION}
             </p>
-            <p className="mt-4 max-w-xl font-body text-ink-muted">
-              Vivo en Wanda, Misiones, en plena Triple Frontera, y me
-              especializo en construir soluciones digitales reales para
-              negocios locales y regionales: sitios web, sistemas de gestión,
-              apps móviles y automatizaciones con IA.
-            </p>
-            <p className="mt-4 max-w-xl font-body text-ink-muted">
-              Lo que diferencia a NEXUS Dev es que no solo entrego un
-              sistema — automatizo los procesos del cliente con bots de
-              WhatsApp, flujos con n8n y recordatorios que trabajan solos las
-              24 horas. Tu negocio no para, ni cuando vos parás.
-            </p>
+            <p className="mt-4 max-w-xl font-body text-ink-muted">{team.bio1}</p>
+            <p className="mt-4 max-w-xl font-body text-ink-muted">{team.bio2}</p>
             <div className="mt-6 flex gap-3">
               <a
                 href={WHATSAPP_URL}

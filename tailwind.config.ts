@@ -18,8 +18,8 @@ const config: Config = {
         },
         ink: {
           DEFAULT: "#f2f4f2",
-          muted: "#8f97a3",
-          dim: "#5b6270",
+          muted: "#a3abb6",
+          dim: "#767f8c",
         },
       },
       fontFamily: {

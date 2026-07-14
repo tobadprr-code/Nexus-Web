@@ -6,20 +6,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { WHATSAPP_URL } from "@/lib/constants";
-
-const NAV_LINKS = [
-  { label: "Sobre nosotros", href: "#sobre-nosotros" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Equipo", href: "#equipo" },
-  { label: "Tecnologías", href: "#tecnologias" },
-  { label: "Contacto", href: "#contacto" },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const NAV_LINKS = [
+    { label: t.nav.about, href: "#sobre-nosotros" },
+    { label: t.nav.services, href: "#servicios" },
+    { label: t.nav.projects, href: "#proyectos" },
+    { label: t.nav.process, href: "#proceso" },
+    { label: t.nav.team, href: "#equipo" },
+    { label: t.nav.tech, href: "#tecnologias" },
+    { label: t.nav.faq, href: "#preguntas" },
+    { label: t.nav.contact, href: "#contacto" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -51,7 +55,7 @@ export default function Navbar() {
             />
           </a>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-6 xl:flex">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -65,6 +69,7 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <LanguageSwitcher className="hidden sm:flex" />
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -73,12 +78,12 @@ export default function Navbar() {
               className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-nexus-green to-nexus-cyan px-4 py-2 font-mono text-[13px] font-medium text-void transition-transform hover:scale-105 sm:flex"
             >
               <FaWhatsapp size={15} />
-              Hablemos
+              {t.nav.cta}
             </a>
             <button
               onClick={() => setOpen(true)}
               data-cursor-hover
-              className="grid h-10 w-10 place-items-center rounded-full border border-line text-ink lg:hidden"
+              className="grid h-10 w-10 place-items-center rounded-full border border-line text-ink xl:hidden"
               aria-label="Abrir menú"
             >
               <Menu size={18} />
@@ -93,7 +98,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-void/97 backdrop-blur-xl lg:hidden"
+            className="fixed inset-0 z-[60] bg-void/97 backdrop-blur-xl xl:hidden"
           >
             <div className="flex items-center justify-between px-6 py-5">
               <Image src="/logo-full-dark.png" alt="NEXUS" width={934} height={191} className="h-5 w-auto" />
@@ -105,7 +110,10 @@ export default function Navbar() {
                 <X size={18} />
               </button>
             </div>
-            <nav className="flex flex-col gap-1 px-6 pt-8">
+            <div className="px-6 pt-2">
+              <LanguageSwitcher />
+            </div>
+            <nav className="flex flex-col gap-1 px-6 pt-6">
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}
@@ -114,7 +122,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="border-b border-line py-4 font-display text-2xl text-ink"
+                  className="border-b border-line py-3.5 font-display text-2xl text-ink"
                 >
                   {link.label}
                 </motion.a>
@@ -126,7 +134,7 @@ export default function Navbar() {
                 className="mt-6 flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-nexus-green to-nexus-cyan px-5 py-3.5 font-mono text-sm font-medium text-void"
               >
                 <FaWhatsapp size={16} />
-                Escribir por WhatsApp
+                {t.nav.cta}
               </a>
             </nav>
           </motion.div>

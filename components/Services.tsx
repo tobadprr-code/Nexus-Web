@@ -11,45 +11,10 @@ import {
 } from "lucide-react";
 import SectionTag from "./SectionTag";
 import TiltCard from "./TiltCard";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const SERVICES = [
-  {
-    icon: LayoutDashboard,
-    title: "Sistemas de gestión personalizados",
-    text: "Software a medida para administrar socios, turnos, stock, cobros y operación diaria, adaptado 100% a tu rubro.",
-    accent: "green" as const,
-  },
-  {
-    icon: Globe,
-    title: "Diseño y desarrollo de páginas web",
-    text: "Sitios institucionales, landing pages y portales de clientes con diseño moderno, rápidos y optimizados para convertir visitas en clientes.",
-    accent: "cyan" as const,
-  },
-  {
-    icon: MessageSquareCode,
-    title: "Automatizaciones con WhatsApp",
-    text: "Bots conversacionales que reservan turnos, cobran, responden consultas frecuentes y avisan vencimientos, sin que nadie lo escriba a mano.",
-    accent: "purple" as const,
-  },
-  {
-    icon: BrainCircuit,
-    title: "Soluciones con IA",
-    text: "Modelos de lenguaje y visión aplicados a tu negocio: clasificación de mensajes, respuestas inteligentes y detección automática de eventos.",
-    accent: "purple" as const,
-  },
-  {
-    icon: BarChart3,
-    title: "Dashboards y reportes",
-    text: "Paneles claros con la información que importa: ingresos, asistencia, stock crítico y métricas del negocio en tiempo real.",
-    accent: "green" as const,
-  },
-  {
-    icon: Smartphone,
-    title: "Apps móviles a medida",
-    text: "Aplicaciones para Android e iOS que conectan con tu sistema de gestión y con tus canales de venta.",
-    accent: "cyan" as const,
-  },
-];
+const ICONS = [LayoutDashboard, Globe, MessageSquareCode, BrainCircuit, BarChart3, Smartphone];
+const ACCENTS = ["green", "cyan", "purple", "purple", "green", "cyan"] as const;
 
 const ACCENT_MAP = {
   green: {
@@ -73,6 +38,9 @@ const ACCENT_MAP = {
 };
 
 export default function Services() {
+  const { t } = useLanguage();
+  const s = t.services;
+
   return (
     <section id="servicios" className="relative py-28 sm:py-36">
       <div
@@ -87,15 +55,16 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="mb-16 max-w-2xl"
         >
-          <SectionTag>Qué hacemos</SectionTag>
+          <SectionTag>{s.tag}</SectionTag>
           <h2 className="text-balance font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
-            De tu página web al sistema que la mueve por dentro
+            {s.heading}
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service, i) => {
-            const accent = ACCENT_MAP[service.accent];
+          {s.items.map((service, i) => {
+            const Icon = ICONS[i % ICONS.length];
+            const accent = ACCENT_MAP[ACCENTS[i % ACCENTS.length]];
             return (
               <motion.div
                 key={service.title}
@@ -115,7 +84,7 @@ export default function Services() {
                   <div
                     className={`flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-void ${accent.text}`}
                   >
-                    <service.icon size={22} strokeWidth={1.8} />
+                    <Icon size={22} strokeWidth={1.8} />
                   </div>
                   <h3 className="mt-6 font-display text-xl font-medium text-ink">
                     {service.title}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -46,6 +47,15 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Tobias Britez" }],
   creator: "NEXUS Dev",
+  manifest: "/manifest.json",
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      "es-AR": siteUrl,
+      en: siteUrl,
+      "pt-BR": siteUrl,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "es_AR",
@@ -64,12 +74,21 @@ export const metadata: Metadata = {
     images: ["/logo-full.png"],
   },
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+export const viewport = {
+  themeColor: "#07080a",
 };
 
 const jsonLd = {
@@ -98,8 +117,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <CustomCursor />
-        {children}
+        <LanguageProvider>
+          <CustomCursor />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

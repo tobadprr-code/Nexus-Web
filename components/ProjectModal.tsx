@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { buildWhatsAppUrl } from "@/lib/constants";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import type { Project } from "./Projects";
 
 export default function ProjectModal({
@@ -13,6 +14,9 @@ export default function ProjectModal({
   project: Project | null;
   onClose: () => void;
 }) {
+  const { t } = useLanguage();
+  const m = t.projectModal;
+
   return (
     <AnimatePresence>
       {project && (
@@ -63,7 +67,7 @@ export default function ProjectModal({
 
             <div className="mt-6">
               <p className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-dim">
-                Lo que incluye
+                {m.includes}
               </p>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {project.highlights.map((h) => (
@@ -80,7 +84,7 @@ export default function ProjectModal({
 
             <div className="mt-6">
               <p className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-dim">
-                Cómo lo construimos
+                {m.howWeBuilt}
               </p>
               <div className="space-y-3">
                 {project.process.map((step, i) => (
@@ -95,12 +99,12 @@ export default function ProjectModal({
             </div>
 
             <div className="mt-6 flex flex-wrap gap-2">
-              {project.tech.map((t) => (
+              {project.tech.map((tItem) => (
                 <span
-                  key={t}
+                  key={tItem}
                   className="rounded-full border border-line bg-void px-2.5 py-1 font-mono text-[11px] text-ink-muted"
                 >
-                  {t}
+                  {tItem}
                 </span>
               ))}
             </div>
@@ -114,14 +118,12 @@ export default function ProjectModal({
                   data-cursor-hover
                   className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-nexus-green to-nexus-cyan px-5 py-3 font-mono text-sm font-medium text-void transition-transform hover:scale-105"
                 >
-                  Ver sitio en vivo
+                  {m.viewLive}
                   <ExternalLink size={15} />
                 </a>
               )}
               <a
-                href={buildWhatsAppUrl(
-                  `Hola! Vi el proyecto "${project.name}" en la web de NEXUS Dev y quiero algo similar para mi negocio.`
-                )}
+                href={buildWhatsAppUrl(m.whatsappMessage(project.name))}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor-hover
@@ -132,7 +134,7 @@ export default function ProjectModal({
                 }`}
               >
                 <FaWhatsapp size={16} />
-                Quiero uno así
+                {m.wantOne}
               </a>
             </div>
           </motion.div>

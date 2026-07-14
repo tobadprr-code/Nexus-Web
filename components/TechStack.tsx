@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import { motion } from "framer-motion";
 import SectionTag from "./SectionTag";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const ROW_1 = [
   { emoji: "🌐", label: "HTML5" },
@@ -61,6 +62,9 @@ function MarqueeRow({
 }
 
 export default function TechStack() {
+  const { t } = useLanguage();
+  const ts = t.techstack;
+
   return (
     <section id="tecnologias" className="relative py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-6">
@@ -71,9 +75,9 @@ export default function TechStack() {
           transition={{ duration: 0.6 }}
           className="mb-14 max-w-2xl"
         >
-          <SectionTag>Stack tecnológico</SectionTag>
+          <SectionTag>{ts.tag}</SectionTag>
           <h2 className="text-balance font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
-            Herramientas elegidas por confiabilidad, no por moda
+            {ts.heading}
           </h2>
         </motion.div>
       </div>

@@ -36,9 +36,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *:not(.marquee-track):not(.marquee-track *),
+  *:not(.marquee-track):not(.marquee-track *)::before,
+  *:not(.marquee-track):not(.marquee-track *)::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -54,6 +54,24 @@ textarea:focus-visible {
   outline: 2px solid #00ff9d;
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 200;
+  background: #00ff9d;
+  color: #07080a;
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
 }
 
 @keyframes marquee-scroll {

@@ -1,43 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { FaWhatsapp, FaGithub } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import SectionTag from "./SectionTag";
 import { WHATSAPP_URL, WHATSAPP_DISPLAY, EMAIL, GITHUB_URL } from "@/lib/constants";
-
-const BUSINESS_TYPES = [
-  { label: "gimnasio", emoji: "🏋️" },
-  { label: "remisería", emoji: "🚕" },
-  { label: "kiosco", emoji: "🏪" },
-  { label: "lavadero", emoji: "🚿" },
-  { label: "negocio", emoji: "🚀" },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 function RotatingBusiness() {
+  const { t } = useLanguage();
+  const words = t.contact.businessWords;
   const [i, setI] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % BUSINESS_TYPES.length), 2200);
-    return () => clearInterval(t);
-  }, []);
+    setI(0);
+    const interval = setInterval(() => setI((v) => (v + 1) % words.length), 2200);
+    return () => clearInterval(interval);
+  }, [words]);
+
+  const current = words[i] ?? words[0];
 
   return (
     <span className="relative inline-flex min-w-[7ch] items-baseline justify-center gap-2 align-baseline">
       <AnimatePresence mode="wait">
         <motion.span
-          key={BUSINESS_TYPES[i].label}
+          key={current.label}
           initial={{ y: 18, opacity: 0, filter: "blur(4px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           exit={{ y: -18, opacity: 0, filter: "blur(4px)" }}
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="inline-flex items-baseline gap-2 whitespace-nowrap"
         >
-          <span>{BUSINESS_TYPES[i].emoji}</span>
+          <span>{current.emoji}</span>
           <span className="bg-gradient-to-r from-nexus-green to-nexus-cyan bg-clip-text text-transparent">
-            {BUSINESS_TYPES[i].label}
+            {current.label}
           </span>
         </motion.span>
       </AnimatePresence>
@@ -46,23 +44,59 @@ function RotatingBusiness() {
 }
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { t } = useLanguage();
+  const c = t.contact;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const renderedAt = useRef(Date.now());
+
+  useEffect(() => {
+    renderedAt.current = Date.now();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    // Reemplazar por integración real (API route / servicio de email)
-    setTimeout(() => {
-      setLoading(false);
-      setSent(true);
-    }, 900);
+    setStatus("loading");
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          business: data.get("business"),
+          contact: data.get("contact"),
+          message: data.get("message"),
+          company_website: data.get("company_website"),
+          formRenderedAt: renderedAt.current,
+        }),
+      });
+
+      const json = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(json.error || c.errorText);
+        setStatus("error");
+        return;
+      }
+
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setErrorMsg(c.errorText);
+      setStatus("error");
+    }
   };
 
   return (
     <section id="contacto" className="relative py-28 sm:py-36">
       <div
-        className="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-nexus-green/[0.06] blur-[140px]"
+        className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-nexus-green/[0.06] blur-[140px]"
         aria-hidden
       />
       <div className="relative mx-auto max-w-7xl px-6">
@@ -74,15 +108,14 @@ export default function Contact() {
           className="mb-16 text-center"
         >
           <div className="flex justify-center">
-            <SectionTag>Hablemos de tu negocio</SectionTag>
+            <SectionTag>{c.tag}</SectionTag>
           </div>
           <h2 className="mx-auto flex flex-wrap items-baseline justify-center gap-x-3 text-balance font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
-            Contanos qué necesita tu
+            {c.headingPrefix}
             <RotatingBusiness />
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-balance font-body text-ink-muted">
-            Respondemos por WhatsApp en el día. Sin compromiso, sin letra
-            chica.
+            {c.subtitle}
           </p>
         </motion.div>
 
@@ -105,7 +138,7 @@ export default function Contact() {
                 <FaWhatsapp size={26} />
               </div>
               <div>
-                <p className="font-mono text-xs text-ink-dim">WhatsApp directo</p>
+                <p className="font-mono text-xs text-ink-dim">{c.whatsappLabel}</p>
                 <p className="mt-1 font-display text-lg text-ink">{WHATSAPP_DISPLAY}</p>
               </div>
             </a>
@@ -119,7 +152,7 @@ export default function Contact() {
                 <SiGmail size={22} />
               </div>
               <div>
-                <p className="font-mono text-xs text-ink-dim">Email</p>
+                <p className="font-mono text-xs text-ink-dim">{c.emailLabel}</p>
                 <p className="mt-1 font-display text-lg text-ink">{EMAIL}</p>
               </div>
             </a>
@@ -135,7 +168,7 @@ export default function Contact() {
                 <FaGithub size={24} />
               </div>
               <div>
-                <p className="font-mono text-xs text-ink-dim">GitHub</p>
+                <p className="font-mono text-xs text-ink-dim">{c.githubLabel}</p>
                 <p className="mt-1 font-display text-lg text-ink">github.com/tobadprr-code</p>
               </div>
             </a>
@@ -149,8 +182,12 @@ export default function Contact() {
             onSubmit={handleSubmit}
             className="rounded-2xl border border-line bg-surface p-8"
           >
-            {sent ? (
-              <div className="relative flex h-full flex-col items-center justify-center gap-4 py-16 text-center">
+            {status === "sent" ? (
+              <div
+                role="status"
+                aria-live="polite"
+                className="relative flex h-full flex-col items-center justify-center gap-4 py-16 text-center"
+              >
                 {Array.from({ length: 10 }).map((_, i) => {
                   const angle = (i / 10) * Math.PI * 2;
                   const dist = 60 + (i % 3) * 14;
@@ -178,68 +215,90 @@ export default function Contact() {
                 >
                   <CheckCircle2 size={40} className="text-nexus-green" />
                 </motion.div>
-                <p className="font-display text-xl text-ink">
-                  Mensaje enviado
-                </p>
-                <p className="max-w-xs font-body text-sm text-ink-muted">
-                  Gracias por escribirnos. Te respondemos a la brevedad.
-                </p>
+                <p className="font-display text-xl text-ink">{c.successTitle}</p>
+                <p className="max-w-xs font-body text-sm text-ink-muted">{c.successText}</p>
               </div>
             ) : (
               <div className="space-y-5">
+                {/* Honeypot field: hidden from real users, bots often fill it */}
+                <input
+                  type="text"
+                  name="company_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                  aria-hidden="true"
+                />
+
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label className="mb-2 block font-mono text-xs text-ink-muted">
-                      Nombre
+                      {c.formName}
                     </label>
                     <input
                       required
+                      name="name"
                       type="text"
-                      placeholder="Tu nombre"
+                      placeholder={c.formNamePlaceholder}
                       className="w-full rounded-xl border border-line bg-void px-4 py-3 font-body text-sm text-ink placeholder:text-ink-dim focus:border-nexus-green"
                     />
                   </div>
                   <div>
                     <label className="mb-2 block font-mono text-xs text-ink-muted">
-                      Negocio
+                      {c.formBusiness}
                     </label>
                     <input
+                      name="business"
                       type="text"
-                      placeholder="Nombre de tu negocio"
+                      placeholder={c.formBusinessPlaceholder}
                       className="w-full rounded-xl border border-line bg-void px-4 py-3 font-body text-sm text-ink placeholder:text-ink-dim focus:border-nexus-green"
                     />
                   </div>
                 </div>
                 <div>
                   <label className="mb-2 block font-mono text-xs text-ink-muted">
-                    Email o WhatsApp
+                    {c.formContact}
                   </label>
                   <input
                     required
+                    name="contact"
                     type="text"
-                    placeholder="Dónde te contactamos"
+                    placeholder={c.formContactPlaceholder}
                     className="w-full rounded-xl border border-line bg-void px-4 py-3 font-body text-sm text-ink placeholder:text-ink-dim focus:border-nexus-green"
                   />
                 </div>
                 <div>
                   <label className="mb-2 block font-mono text-xs text-ink-muted">
-                    Contanos sobre tu negocio
+                    {c.formMessage}
                   </label>
                   <textarea
                     required
+                    name="message"
                     rows={4}
-                    placeholder="Qué tipo de negocio tenés y qué te gustaría automatizar"
+                    placeholder={c.formMessagePlaceholder}
                     className="w-full resize-none rounded-xl border border-line bg-void px-4 py-3 font-body text-sm text-ink placeholder:text-ink-dim focus:border-nexus-green"
                   />
                 </div>
+
+                {status === "error" && (
+                  <div
+                    role="alert"
+                    aria-live="polite"
+                    className="flex items-start gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2.5 text-sm text-red-300"
+                  >
+                    <AlertCircle size={16} className="mt-0.5 shrink-0" />
+                    <span>{errorMsg}</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={status === "loading"}
                   data-cursor-hover
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-nexus-green to-nexus-cyan px-6 py-3.5 font-mono text-sm font-medium text-void transition-transform hover:scale-[1.02] disabled:opacity-60"
                 >
-                  {loading ? "Enviando…" : "Enviar mensaje"}
-                  {!loading && <Send size={15} />}
+                  {status === "loading" ? c.formSending : c.formSubmit}
+                  {status !== "loading" && <Send size={15} />}
                 </button>
               </div>
             )}

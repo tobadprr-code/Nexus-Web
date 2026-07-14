@@ -1,16 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import { WHATSAPP_URL, WHATSAPP_DISPLAY, EMAIL, LOCATION } from "@/lib/constants";
-
-const LINKS = [
-  { label: "Sobre nosotros", href: "#sobre-nosotros" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Equipo", href: "#equipo" },
-  { label: "Contacto", href: "#contacto" },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+  const f = t.footer;
+
+  const LINKS = [
+    { label: t.nav.about, href: "#sobre-nosotros" },
+    { label: t.nav.services, href: "#servicios" },
+    { label: t.nav.projects, href: "#proyectos" },
+    { label: t.nav.process, href: "#proceso" },
+    { label: t.nav.faq, href: "#preguntas" },
+    { label: t.nav.contact, href: "#contacto" },
+  ];
+
   return (
     <footer className="relative border-t border-line py-14">
       <div className="mx-auto max-w-7xl px-6">
@@ -19,13 +25,11 @@ export default function Footer() {
             <div className="flex items-center">
               <Image src="/logo-full-dark.png" alt="NEXUS Dev" width={934} height={191} className="h-5 w-auto" />
             </div>
-            <p className="mt-4 max-w-xs font-body text-sm text-ink-muted">
-              Sistemas inteligentes para negocios que crecen.
-            </p>
+            <p className="mt-4 max-w-xs font-body text-sm text-ink-muted">{f.tagline}</p>
           </div>
 
           <div>
-            <p className="font-mono text-xs text-ink-dim">Navegación</p>
+            <p className="font-mono text-xs text-ink-dim">{f.navTitle}</p>
             <ul className="mt-4 space-y-2.5">
               {LINKS.map((link) => (
                 <li key={link.href}>
@@ -41,7 +45,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-xs text-ink-dim">Contacto</p>
+            <p className="font-mono text-xs text-ink-dim">{f.contactTitle}</p>
             <ul className="mt-4 space-y-2.5">
               <li>
                 <a
@@ -61,20 +65,16 @@ export default function Footer() {
                   {EMAIL}
                 </a>
               </li>
-              <li className="font-body text-sm text-ink-muted">
-                {LOCATION}
-              </li>
+              <li className="font-body text-sm text-ink-muted">{LOCATION}</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row">
           <p className="font-mono text-xs text-ink-dim">
-            © {new Date().getFullYear()} NEXUS Dev. Todos los derechos reservados.
+            © {new Date().getFullYear()} NEXUS Dev. {f.rights}
           </p>
-          <p className="font-mono text-xs text-ink-dim">
-            Diseñado y desarrollado por Tobias Britez
-          </p>
+          <p className="font-mono text-xs text-ink-dim">{f.madeBy}</p>
         </div>
       </div>
     </footer>

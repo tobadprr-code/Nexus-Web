@@ -4,12 +4,16 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { WHATSAPP_URL } from "@/lib/constants";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import ParticleField from "./ParticleField";
 import InteractiveDemo from "./InteractiveDemo";
 import MagneticButton from "./MagneticButton";
 import Counter from "./Counter";
 
 export default function Hero() {
+  const { t } = useLanguage();
+  const h = t.hero;
+
   return (
     <section
       id="top"
@@ -35,7 +39,7 @@ export default function Hero() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 font-mono text-xs text-nexus-green"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-nexus-green shadow-glow-sm" />
-            Desarrollo de sistemas · Argentina
+            {h.badge}
           </motion.div>
 
           <motion.h1
@@ -44,13 +48,13 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-balance font-display text-[13vw] font-semibold leading-[0.95] tracking-tight text-ink sm:text-6xl lg:text-[4.4rem]"
           >
-            Sistemas que{" "}
+            {h.titlePre}{" "}
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-nexus-green to-nexus-cyan bg-clip-text text-transparent">
-                automatizan
+                {h.titleHighlight}
               </span>
             </span>{" "}
-            tu negocio
+            {h.titlePost}
           </motion.h1>
 
           <motion.p
@@ -59,10 +63,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 max-w-xl text-balance font-body text-lg text-ink-muted"
           >
-            Páginas web, sistemas de gestión a medida y automatizaciones con
-            WhatsApp e IA para gimnasios, remiserías, kioscos y lavaderos.
-            Menos planillas, menos mensajes manuales, más tiempo para tu
-            negocio.
+            {h.subtitle}
           </motion.p>
 
           <motion.div
@@ -77,7 +78,7 @@ export default function Hero() {
               data-cursor-hover
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-nexus-green to-nexus-cyan px-6 py-3.5 font-mono text-sm font-medium text-void"
             >
-              Ver proyectos
+              {h.ctaProjects}
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </MagneticButton>
             <MagneticButton
@@ -89,7 +90,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3.5 font-mono text-sm text-ink transition-colors hover:border-nexus-green hover:text-nexus-green"
             >
               <FaWhatsapp size={16} />
-              Contactar
+              {h.ctaContact}
             </MagneticButton>
           </motion.div>
 
@@ -101,19 +102,19 @@ export default function Hero() {
           >
             <div>
               <span className="text-2xl font-display font-semibold text-ink">
-                <Counter to={3} prefix="+" />
+                <Counter to={10} prefix="+" />
               </span>
-              <p className="mt-1">sistemas en producción</p>
+              <p className="mt-1">{h.statSystems}</p>
             </div>
             <div>
               <span className="text-2xl font-display font-semibold text-ink">24/7</span>
-              <p className="mt-1">atención automatizada</p>
+              <p className="mt-1">{h.stat247}</p>
             </div>
             <div>
               <span className="text-2xl font-display font-semibold text-ink">
                 <Counter to={100} suffix="%" />
               </span>
-              <p className="mt-1">a medida del negocio</p>
+              <p className="mt-1">{h.statCustom}</p>
             </div>
           </motion.div>
         </div>
