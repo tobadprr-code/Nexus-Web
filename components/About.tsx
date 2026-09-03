@@ -12,7 +12,11 @@ export default function About() {
   const a = t.about;
 
   return (
+<<<<<<< HEAD
     <section id="sobre-nosotros" className="relative py-28 sm:py-36">
+=======
+    <section id="sobre-nosotros" className="relative py-24 sm:py-32">
+>>>>>>> origin/main
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           <motion.div

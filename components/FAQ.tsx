@@ -12,7 +12,11 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
+<<<<<<< HEAD
     <section id="preguntas" className="relative py-28 sm:py-36">
+=======
+    <section id="preguntas" className="relative py-24 sm:py-32">
+>>>>>>> origin/main
       <div className="mx-auto max-w-4xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

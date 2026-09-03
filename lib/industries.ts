@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import { Dumbbell, HeartPulse, Eye, Wrench, Wallet, Package, type LucideIcon } from "lucide-react";
 
 export type IndustryKey = "fitness" | "salud" | "seguridad" | "servicios" | "finanzas" | "comercio";
+=======
+import { Dumbbell, HeartPulse, Eye, Wrench, Wallet, type LucideIcon } from "lucide-react";
+
+export type IndustryKey = "fitness" | "salud" | "seguridad" | "servicios" | "finanzas";
+>>>>>>> origin/main
 
 export type Accent = "green" | "cyan" | "purple" | "blue" | "amber" | "rose";
 
@@ -13,7 +19,10 @@ export const INDUSTRY_ICON: Record<IndustryKey, LucideIcon> = {
   seguridad: Eye,
   servicios: Wrench,
   finanzas: Wallet,
+<<<<<<< HEAD
   comercio: Package,
+=======
+>>>>>>> origin/main
 };
 
 export const INDUSTRY_ACCENT: Record<IndustryKey, Accent> = {
@@ -22,7 +31,10 @@ export const INDUSTRY_ACCENT: Record<IndustryKey, Accent> = {
   seguridad: "purple",
   servicios: "amber",
   finanzas: "cyan",
+<<<<<<< HEAD
   comercio: "rose",
+=======
+>>>>>>> origin/main
 };
 
 export const ACCENT_STYLES: Record<Accent, { text: string; border: string; bg: string; ring: string }> = {

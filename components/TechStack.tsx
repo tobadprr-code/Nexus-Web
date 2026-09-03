@@ -66,7 +66,11 @@ export default function TechStack() {
   const ts = t.techstack;
 
   return (
+<<<<<<< HEAD
     <section id="tecnologias" className="relative py-28 sm:py-36">
+=======
+    <section id="tecnologias" className="relative py-24 sm:py-32">
+>>>>>>> origin/main
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

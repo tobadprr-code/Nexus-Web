@@ -137,3 +137,44 @@ textarea:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.06);
   -webkit-overflow-scrolling: touch;
 }
+<<<<<<< HEAD
+=======
+
+/* barrido de brillo sobre los CTA principales — refuerzo sutil de "premium" en hover */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.35) 48%,
+    transparent 76%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* punto pulsante reutilizable (badges "en vivo", nav activo, etc.) */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 157, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(0, 255, 157, 0);
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2.2s ease-out infinite;
+}
+>>>>>>> origin/main

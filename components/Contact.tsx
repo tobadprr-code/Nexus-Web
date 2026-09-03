@@ -94,7 +94,11 @@ export default function Contact() {
   };
 
   return (
+<<<<<<< HEAD
     <section id="contacto" className="relative overflow-hidden py-28 sm:py-36">
+=======
+    <section id="contacto" className="relative overflow-hidden py-24 sm:py-32">
+>>>>>>> origin/main
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-nexus-green/[0.06] blur-[140px]"
         aria-hidden
@@ -295,7 +299,11 @@ export default function Contact() {
                   type="submit"
                   disabled={status === "loading"}
                   data-cursor-hover
+<<<<<<< HEAD
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-nexus-green to-nexus-cyan px-6 py-3.5 font-mono text-sm font-medium text-void transition-transform hover:scale-[1.02] disabled:opacity-60"
+=======
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-nexus-green to-nexus-cyan px-6 py-3.5 font-mono text-sm font-medium text-void btn-shine transition-transform hover:scale-[1.02] disabled:opacity-60"
+>>>>>>> origin/main
                 >
                   {status === "loading" ? c.formSending : c.formSubmit}
                   {status !== "loading" && <Send size={15} />}

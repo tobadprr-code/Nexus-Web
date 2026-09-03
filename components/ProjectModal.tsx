@@ -3,7 +3,11 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+<<<<<<< HEAD
 import { X, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+=======
+import { X, ExternalLink, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+>>>>>>> origin/main
 import { FaWhatsapp } from "react-icons/fa";
 import { buildWhatsAppUrl } from "@/lib/constants";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -91,6 +95,14 @@ export default function ProjectModal({
 }) {
   const { t } = useLanguage();
   const m = t.projectModal;
+<<<<<<< HEAD
+=======
+  const [showProcess, setShowProcess] = useState(false);
+
+  useEffect(() => {
+    setShowProcess(false);
+  }, [project]);
+>>>>>>> origin/main
 
   return (
     <AnimatePresence>
@@ -166,6 +178,7 @@ export default function ProjectModal({
             )}
 
             <div className="mt-6">
+<<<<<<< HEAD
               <p className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-dim">
                 {m.howWeBuilt}
               </p>
@@ -179,6 +192,47 @@ export default function ProjectModal({
                   </div>
                 ))}
               </div>
+=======
+              <button
+                onClick={() => setShowProcess((v) => !v)}
+                data-cursor-hover
+                aria-expanded={showProcess}
+                className="flex w-full items-center justify-between gap-3 rounded-lg border border-line bg-void px-3.5 py-2.5 text-left transition-colors hover:border-nexus-green/40"
+              >
+                <span className="font-mono text-xs uppercase tracking-wide text-ink-dim">
+                  {m.howWeBuilt}
+                </span>
+                <motion.span
+                  animate={{ rotate: showProcess ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-ink-dim"
+                >
+                  <ChevronDown size={15} />
+                </motion.span>
+              </button>
+              <AnimatePresence initial={false}>
+                {showProcess && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="space-y-3 px-1 pt-4">
+                      {project.process.map((step, i) => (
+                        <div key={i} className="flex gap-3">
+                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-nexus-green/30 bg-nexus-green/10 font-mono text-[11px] text-nexus-green">
+                            {i + 1}
+                          </span>
+                          <p className="font-body text-sm text-ink-muted">{step}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+>>>>>>> origin/main
             </div>
 
             <div className="mt-6 flex flex-wrap gap-2">
@@ -199,7 +253,11 @@ export default function ProjectModal({
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor-hover
+<<<<<<< HEAD
                   className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-nexus-green to-nexus-cyan px-5 py-3 font-mono text-sm font-medium text-void transition-transform hover:scale-105"
+=======
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-nexus-green to-nexus-cyan px-5 py-3 font-mono text-sm font-medium text-void btn-shine transition-transform hover:scale-105"
+>>>>>>> origin/main
                 >
                   {m.viewLive}
                   <ExternalLink size={15} />
@@ -213,7 +271,11 @@ export default function ProjectModal({
                 className={`inline-flex items-center gap-2 rounded-full border px-5 py-3 font-mono text-sm transition-colors ${
                   project.link
                     ? "border-line text-ink hover:border-nexus-green hover:text-nexus-green"
+<<<<<<< HEAD
                     : "border-transparent bg-gradient-to-r from-nexus-green to-nexus-cyan text-void hover:scale-105"
+=======
+                    : "btn-shine border-transparent bg-gradient-to-r from-nexus-green to-nexus-cyan text-void hover:scale-105"
+>>>>>>> origin/main
                 }`}
               >
                 <FaWhatsapp size={16} />

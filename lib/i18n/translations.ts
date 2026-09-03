@@ -31,9 +31,39 @@ export const translations = {
       statSystems: "sistemas en producción",
       stat247: "atención automatizada",
       statCustom: "a medida del negocio",
+<<<<<<< HEAD
       bizSelectorLabel: "¿Qué tipo de negocio tenés?",
       bizSelectorHint: "Elegí tu rubro y te llevamos directo al sistema pensado para vos",
       bizSelectorOther: "Otro rubro",
+=======
+    },
+    businessMatch: {
+      tag: "Encontrá tu sistema",
+      heading: "¿Qué tipo de negocio tenés?",
+      subtitle: "Elegí tu rubro y mirá cuánto tiempo te devuelve automatizarlo.",
+      calcHeading: "Calculá cuánto te ahorra Nexus",
+      hoursLabel: "horas al mes que te devolvemos",
+      eventsLabel: "por mes",
+      disclaimer: "Estimación aproximada según el rubro, no es un compromiso comercial.",
+      ctaViewSystems: "Ver sistemas para tu rubro",
+      ctaWhatsapp: "Quiero esto para mi negocio",
+      whatsappMessage: (industry: string, hours: number) =>
+        `Hola! Vi la calculadora de NEXUS Dev para ${industry} y me interesa (calculé que ahorraría unas ${hours}hs/mes). ¿Me contás más?`,
+      units: {
+        fitness: "socios activos",
+        salud: "pacientes activos",
+        seguridad: "cámaras monitoreadas",
+        servicios: "equipos por mes",
+        finanzas: "pagos a gestionar por mes",
+      },
+      events: {
+        fitness: "avisos por WhatsApp",
+        salud: "recordatorios automáticos",
+        seguridad: "revisiones manuales evitadas",
+        servicios: "notificaciones automáticas",
+        finanzas: "seguimientos automáticos",
+      },
+>>>>>>> origin/main
     },
     about: {
       tag: "Sobre NEXUS Dev",
@@ -132,6 +162,18 @@ export const translations = {
       subtitle: "Sistemas que desarrollamos y mantenemos nosotros mismos. Hacé click para ver cómo se construyeron.",
       viewCase: "Ver cómo se hizo",
       badge: "Producto propio",
+<<<<<<< HEAD
+=======
+      comparisonShow: "Comparar todos los módulos",
+      comparisonHide: "Ocultar comparativa",
+      comparisonRows: [
+        "Notificaciones automáticas al cliente",
+        "Panel de gestión propio",
+        "Control de pagos o cobros",
+        "Reportes e indicadores",
+        "Roles y permisos de usuario",
+      ],
+>>>>>>> origin/main
       filters: [
         { key: "all", label: "Todos" },
         { key: "fitness", label: "Fitness" },
@@ -139,7 +181,10 @@ export const translations = {
         { key: "seguridad", label: "Seguridad" },
         { key: "servicios", label: "Servicios técnicos" },
         { key: "finanzas", label: "Finanzas" },
+<<<<<<< HEAD
         { key: "comercio", label: "Comercio" },
+=======
+>>>>>>> origin/main
       ],
       items: [
         {
@@ -204,6 +249,7 @@ export const translations = {
         },
         {
           name: "Nexus Repair",
+<<<<<<< HEAD
           category: "Talleres técnicos · Servicio y reparación",
           status: "Próximamente",
           description: "🔧 Software de gestión para talleres técnicos: celulares, computadoras, electrodomésticos y consolas. Desde la recepción del equipo hasta la entrega, con presupuesto y seguimiento en cada paso.",
@@ -220,6 +266,25 @@ export const translations = {
             { from: "bot", text: "Ya tenemos el diagnóstico: cambio de placa madre, $45.000" },
             { from: "client", text: "Dale, adelante" },
             { from: "bot", text: "Presupuesto aprobado ✅ Te avisamos apenas esté lista." },
+=======
+          category: "Reparación de celulares · Servicio propio",
+          status: "Uso personal",
+          badge: "Servicio personal",
+          description: "🔧 El sistema que uso yo mismo para mi servicio de reparación de celulares: desde que recibo el equipo hasta que lo entrego reparado, con presupuesto y seguimiento en cada paso.",
+          longDescription: "Nace de mi propio trabajo reparando celulares: en vez de anotar todo a mano, armé un sistema para ordenar cada reparación desde la recepción del equipo hasta la entrega, con trazabilidad completa de cada orden. No es un software que vendo a otros talleres — es la herramienta que uso yo para mi propio servicio.",
+          highlights: ["Órdenes de trabajo y diagnóstico", "Presupuestos y aprobación del cliente", "Control de repuestos e inventario", "Notificaciones de estado al cliente"],
+          process: [
+            "Mapeé mi propio flujo de trabajo: recepción, diagnóstico, presupuesto y reparación.",
+            "Diseñé la orden de trabajo digital con estados claros en cada etapa.",
+            "Sumé control de repuestos e inventario ligado a cada reparación.",
+            "Automaticé los avisos al cliente cuando cambia el estado de su equipo.",
+          ],
+          whatsappDemo: [
+            { from: "client", text: "Cómo va la reparación de mi celular?" },
+            { from: "bot", text: "Ya tengo el diagnóstico: cambio de pantalla, $45.000" },
+            { from: "client", text: "Dale, adelante" },
+            { from: "bot", text: "Presupuesto aprobado ✅ Te aviso apenas esté lista." },
+>>>>>>> origin/main
           ],
         },
         {
@@ -242,6 +307,7 @@ export const translations = {
             { from: "bot", text: "Te mando el detalle con fechas y montos ahora mismo." },
           ],
         },
+<<<<<<< HEAD
         {
           name: "Nexus Importados",
           category: "Comercio · Importación y venta",
@@ -262,6 +328,8 @@ export const translations = {
             { from: "bot", text: "20W $8.500 · MagSafe $15.000. ¿Cuál te reservo?" },
           ],
         },
+=======
+>>>>>>> origin/main
       ],
     },
     nexusWebs: {
@@ -285,6 +353,29 @@ export const translations = {
             "Tradujimos y adaptamos todo el contenido a español, portugués e inglés.",
           ],
         },
+<<<<<<< HEAD
+=======
+        {
+          name: "Nexus Importados",
+          category: "Tienda online · Accesorios y tecnología",
+          status: "Completado",
+          description: "Tienda online de accesorios y tecnología para celulares (cargadores, cables, AirPods, fundas y más), con catálogo por categorías y pedido final directo por WhatsApp.",
+          longDescription: "Sitio para NEXUS IMPORTADOS, tienda de accesorios y tecnología con entregas en Wanda y alrededores. El catálogo está organizado por categorías, con estados de stock claros (disponible / últimas unidades / agotado) y una experiencia de compra pensada primero para mobile, donde el carrito arma el pedido y lo manda directo por WhatsApp.",
+          highlights: ["Catálogo por categorías", "Estados de stock claros", "Carrito con pedido directo por WhatsApp", "Diseño 100% mobile-first"],
+          process: [
+            "Relevamos el catálogo real y las categorías de productos.",
+            "Diseñamos el carrito para que arme el pedido y lo mande directo por WhatsApp.",
+            "Sumamos estados de stock sin mostrar cantidades exactas.",
+            "Optimizamos toda la experiencia para comprar desde el celular.",
+          ],
+          whatsappDemo: [
+            { from: "client", text: "Tienen cargador para iPhone?" },
+            { from: "bot", text: "Sí! Tenemos 2 modelos disponibles, ¿te paso precios?" },
+            { from: "client", text: "Dale" },
+            { from: "bot", text: "20W $8.500 · MagSafe $15.000. ¿Cuál te reservo?" },
+          ],
+        },
+>>>>>>> origin/main
       ],
     },
     projectModal: {
@@ -343,9 +434,39 @@ export const translations = {
       statSystems: "systems in production",
       stat247: "automated support",
       statCustom: "tailored to your business",
+<<<<<<< HEAD
       bizSelectorLabel: "What type of business do you run?",
       bizSelectorHint: "Pick your industry and we'll take you straight to the system built for it",
       bizSelectorOther: "Something else",
+=======
+    },
+    businessMatch: {
+      tag: "Find your system",
+      heading: "What type of business do you run?",
+      subtitle: "Pick your industry and see how much time automating it gives back.",
+      calcHeading: "Calculate how much Nexus saves you",
+      hoursLabel: "hours a month we give back",
+      eventsLabel: "per month",
+      disclaimer: "Rough estimate based on industry averages, not a commercial commitment.",
+      ctaViewSystems: "View systems for your industry",
+      ctaWhatsapp: "I want this for my business",
+      whatsappMessage: (industry: string, hours: number) =>
+        `Hi! I saw the NEXUS Dev calculator for ${industry} and I'm interested (I estimated around ${hours}h/month saved). Can you tell me more?`,
+      units: {
+        fitness: "active members",
+        salud: "active patients",
+        seguridad: "monitored cameras",
+        servicios: "devices per month",
+        finanzas: "payments to manage per month",
+      },
+      events: {
+        fitness: "WhatsApp reminders",
+        salud: "automatic reminders",
+        seguridad: "manual reviews avoided",
+        servicios: "automatic notifications",
+        finanzas: "automatic follow-ups",
+      },
+>>>>>>> origin/main
     },
     about: {
       tag: "About NEXUS Dev",
@@ -444,6 +565,18 @@ export const translations = {
       subtitle: "Systems we build and maintain ourselves. Click to see how they were built.",
       viewCase: "See how it was built",
       badge: "In-house product",
+<<<<<<< HEAD
+=======
+      comparisonShow: "Compare all modules",
+      comparisonHide: "Hide comparison",
+      comparisonRows: [
+        "Automatic customer notifications",
+        "Own management dashboard",
+        "Payment or billing control",
+        "Reports and metrics",
+        "User roles and permissions",
+      ],
+>>>>>>> origin/main
       filters: [
         { key: "all", label: "All" },
         { key: "fitness", label: "Fitness" },
@@ -451,7 +584,10 @@ export const translations = {
         { key: "seguridad", label: "Security" },
         { key: "servicios", label: "Repair services" },
         { key: "finanzas", label: "Finance" },
+<<<<<<< HEAD
         { key: "comercio", label: "Retail" },
+=======
+>>>>>>> origin/main
       ],
       items: [
         {
@@ -516,6 +652,7 @@ export const translations = {
         },
         {
           name: "Nexus Repair",
+<<<<<<< HEAD
           category: "Repair shops · Service & repair",
           status: "Coming soon",
           description: "🔧 Management software for repair shops: phones, computers, appliances and consoles. From device intake to delivery, with quotes and tracking at every step.",
@@ -532,6 +669,25 @@ export const translations = {
             { from: "bot", text: "Diagnosis is in: motherboard replacement, $45,000" },
             { from: "client", text: "Go ahead" },
             { from: "bot", text: "Quote approved ✅ We'll message you the moment it's ready." },
+=======
+          category: "Phone repair · Personal service",
+          status: "Personal use",
+          badge: "Personal service",
+          description: "🔧 The system I use myself for my own phone repair service: from intake to delivery, with quotes and tracking at every step.",
+          longDescription: "Born out of my own phone repair work: instead of writing everything down by hand, I built a system to organize each repair from intake to delivery, with full traceability per work order. It's not software I sell to other repair shops — it's the tool I use for my own service.",
+          highlights: ["Work orders and diagnostics", "Quotes and customer approval", "Parts and inventory control", "Status notifications to the customer"],
+          process: [
+            "I mapped my own workflow: intake, diagnostics, quote and repair.",
+            "I designed the digital work order with clear statuses at each stage.",
+            "I added parts and inventory control tied to each repair.",
+            "I automated customer notifications whenever their device's status changes.",
+          ],
+          whatsappDemo: [
+            { from: "client", text: "Any update on my phone repair?" },
+            { from: "bot", text: "Diagnosis is in: screen replacement, $45,000" },
+            { from: "client", text: "Go ahead" },
+            { from: "bot", text: "Quote approved ✅ I'll message you the moment it's ready." },
+>>>>>>> origin/main
           ],
         },
         {
@@ -554,6 +710,7 @@ export const translations = {
             { from: "bot", text: "Sending the full breakdown with dates and amounts now." },
           ],
         },
+<<<<<<< HEAD
         {
           name: "Nexus Importados",
           category: "Retail · Import & resale",
@@ -574,6 +731,8 @@ export const translations = {
             { from: "bot", text: "20W $8,500 · MagSafe $15,000. Which one should I hold for you?" },
           ],
         },
+=======
+>>>>>>> origin/main
       ],
     },
     nexusWebs: {
@@ -597,6 +756,29 @@ export const translations = {
             "We translated and adapted all content into Spanish, Portuguese and English.",
           ],
         },
+<<<<<<< HEAD
+=======
+        {
+          name: "Nexus Importados",
+          category: "Online store · Accessories & tech",
+          status: "Completed",
+          description: "Online store for phone accessories and tech (chargers, cables, AirPods, cases and more), with a categorized catalog and orders that go straight to WhatsApp.",
+          longDescription: "Site for NEXUS IMPORTADOS, an accessories and tech store delivering to Wanda and nearby areas. The catalog is organized by category, with clear stock states (available / last units / sold out) and a mobile-first shopping experience where the cart builds the order and sends it straight to WhatsApp.",
+          highlights: ["Categorized catalog", "Clear stock states", "Cart with direct WhatsApp ordering", "100% mobile-first design"],
+          process: [
+            "We mapped the real catalog and product categories.",
+            "We designed the cart to build the order and send it straight to WhatsApp.",
+            "We added stock states without showing exact quantities.",
+            "We optimized the whole experience for buying from a phone.",
+          ],
+          whatsappDemo: [
+            { from: "client", text: "Do you have iPhone chargers?" },
+            { from: "bot", text: "Yep! Two models in stock, want the prices?" },
+            { from: "client", text: "Sure" },
+            { from: "bot", text: "20W $8,500 · MagSafe $15,000. Which one should I hold for you?" },
+          ],
+        },
+>>>>>>> origin/main
       ],
     },
     projectModal: {
@@ -655,9 +837,39 @@ export const translations = {
       statSystems: "sistemas em produção",
       stat247: "atendimento automatizado",
       statCustom: "sob medida para o negócio",
+<<<<<<< HEAD
       bizSelectorLabel: "Que tipo de negócio você tem?",
       bizSelectorHint: "Escolha seu ramo e te levamos direto ao sistema pensado para você",
       bizSelectorOther: "Outro ramo",
+=======
+    },
+    businessMatch: {
+      tag: "Encontre seu sistema",
+      heading: "Que tipo de negócio você tem?",
+      subtitle: "Escolha seu ramo e veja quanto tempo automatizar ele te devolve.",
+      calcHeading: "Calcule quanto a Nexus te economiza",
+      hoursLabel: "horas por mês que devolvemos",
+      eventsLabel: "por mês",
+      disclaimer: "Estimativa aproximada por ramo, não é um compromisso comercial.",
+      ctaViewSystems: "Ver sistemas para o seu ramo",
+      ctaWhatsapp: "Quero isso para o meu negócio",
+      whatsappMessage: (industry: string, hours: number) =>
+        `Olá! Vi a calculadora da NEXUS Dev para ${industry} e me interessei (calculei uma economia de ${hours}h/mês). Pode me contar mais?`,
+      units: {
+        fitness: "clientes ativos",
+        salud: "pacientes ativos",
+        seguridad: "câmeras monitoradas",
+        servicios: "aparelhos por mês",
+        finanzas: "pagamentos a gerenciar por mês",
+      },
+      events: {
+        fitness: "avisos por WhatsApp",
+        salud: "lembretes automáticos",
+        seguridad: "revisões manuais evitadas",
+        servicios: "notificações automáticas",
+        finanzas: "acompanhamentos automáticos",
+      },
+>>>>>>> origin/main
     },
     about: {
       tag: "Sobre a NEXUS Dev",
@@ -756,6 +968,18 @@ export const translations = {
       subtitle: "Sistemas que desenvolvemos e mantemos nós mesmos. Clique para ver como foram construídos.",
       viewCase: "Ver como foi feito",
       badge: "Produto próprio",
+<<<<<<< HEAD
+=======
+      comparisonShow: "Comparar todos os módulos",
+      comparisonHide: "Ocultar comparativo",
+      comparisonRows: [
+        "Notificações automáticas ao cliente",
+        "Painel de gestão próprio",
+        "Controle de pagamentos ou cobranças",
+        "Relatórios e indicadores",
+        "Papéis e permissões de usuário",
+      ],
+>>>>>>> origin/main
       filters: [
         { key: "all", label: "Todos" },
         { key: "fitness", label: "Fitness" },
@@ -763,7 +987,10 @@ export const translations = {
         { key: "seguridad", label: "Segurança" },
         { key: "servicios", label: "Assistência técnica" },
         { key: "finanzas", label: "Finanças" },
+<<<<<<< HEAD
         { key: "comercio", label: "Comércio" },
+=======
+>>>>>>> origin/main
       ],
       items: [
         {
@@ -828,6 +1055,7 @@ export const translations = {
         },
         {
           name: "Nexus Repair",
+<<<<<<< HEAD
           category: "Assistências técnicas · Serviço e reparo",
           status: "Em breve",
           description: "🔧 Software de gestão para assistências técnicas: celulares, computadores, eletrodomésticos e consoles. Da recepção do aparelho até a entrega, com orçamento e acompanhamento em cada etapa.",
@@ -844,6 +1072,25 @@ export const translations = {
             { from: "bot", text: "Já temos o diagnóstico: troca da placa-mãe, R$ 900" },
             { from: "client", text: "Pode seguir" },
             { from: "bot", text: "Orçamento aprovado ✅ Avisamos assim que estiver pronto." },
+=======
+          category: "Conserto de celulares · Serviço próprio",
+          status: "Uso pessoal",
+          badge: "Serviço pessoal",
+          description: "🔧 O sistema que eu mesmo uso para o meu próprio serviço de conserto de celulares: da recepção do aparelho até a entrega, com orçamento e acompanhamento em cada etapa.",
+          longDescription: "Nasceu do meu próprio trabalho consertando celulares: em vez de anotar tudo à mão, montei um sistema para organizar cada reparo desde a entrada do aparelho até a entrega, com rastreabilidade completa de cada ordem. Não é um software que vendo para outras assistências — é a ferramenta que eu uso no meu próprio serviço.",
+          highlights: ["Ordens de serviço e diagnóstico", "Orçamentos e aprovação do cliente", "Controle de peças e estoque", "Notificações de status ao cliente"],
+          process: [
+            "Mapeei meu próprio fluxo de trabalho: recepção, diagnóstico, orçamento e reparo.",
+            "Desenhei a ordem de serviço digital com status claros em cada etapa.",
+            "Adicionei controle de peças e estoque ligado a cada reparo.",
+            "Automatizei os avisos ao cliente quando o status do aparelho muda.",
+          ],
+          whatsappDemo: [
+            { from: "client", text: "Como está o conserto do meu celular?" },
+            { from: "bot", text: "Já tenho o diagnóstico: troca de tela, R$ 900" },
+            { from: "client", text: "Pode seguir" },
+            { from: "bot", text: "Orçamento aprovado ✅ Aviso assim que estiver pronto." },
+>>>>>>> origin/main
           ],
         },
         {
@@ -866,6 +1113,7 @@ export const translations = {
             { from: "bot", text: "Já te mando o detalhe com datas e valores." },
           ],
         },
+<<<<<<< HEAD
         {
           name: "Nexus Importados",
           category: "Comércio · Importação e revenda",
@@ -886,6 +1134,8 @@ export const translations = {
             { from: "bot", text: "20W R$ 85 · MagSafe R$ 150. Qual eu reservo pra você?" },
           ],
         },
+=======
+>>>>>>> origin/main
       ],
     },
     nexusWebs: {
@@ -909,6 +1159,29 @@ export const translations = {
             "Traduzimos e adaptamos todo o conteúdo para espanhol, português e inglês.",
           ],
         },
+<<<<<<< HEAD
+=======
+        {
+          name: "Nexus Importados",
+          category: "Loja online · Acessórios e tecnologia",
+          status: "Concluído",
+          description: "Loja online de acessórios e tecnologia para celular (carregadores, cabos, AirPods, capinhas e mais), com catálogo por categorias e pedido direto pelo WhatsApp.",
+          longDescription: "Site da NEXUS IMPORTADOS, loja de acessórios e tecnologia com entregas em Wanda e arredores. O catálogo é organizado por categorias, com status de estoque claros (disponível / últimas unidades / esgotado) e uma experiência de compra pensada primeiro para celular, onde o carrinho monta o pedido e manda direto pelo WhatsApp.",
+          highlights: ["Catálogo por categorias", "Status de estoque claros", "Carrinho com pedido direto pelo WhatsApp", "Design 100% mobile-first"],
+          process: [
+            "Mapeamos o catálogo real e as categorias de produtos.",
+            "Desenhamos o carrinho para montar o pedido e mandar direto pelo WhatsApp.",
+            "Adicionamos status de estoque sem mostrar quantidades exatas.",
+            "Otimizamos toda a experiência para comprar pelo celular.",
+          ],
+          whatsappDemo: [
+            { from: "client", text: "Vocês têm carregador de iPhone?" },
+            { from: "bot", text: "Temos sim! 2 modelos disponíveis, quer os preços?" },
+            { from: "client", text: "Manda" },
+            { from: "bot", text: "20W R$ 85 · MagSafe R$ 150. Qual eu reservo pra você?" },
+          ],
+        },
+>>>>>>> origin/main
       ],
     },
     projectModal: {

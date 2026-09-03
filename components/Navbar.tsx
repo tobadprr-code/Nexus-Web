@@ -11,6 +11,10 @@ export default function Navbar() {
   const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+<<<<<<< HEAD
+=======
+  const [active, setActive] = useState("top");
+>>>>>>> origin/main
 
   const NAV_LINKS = [
     { label: t.nav.about, href: "#sobre-nosotros" },
@@ -30,6 +34,30 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+<<<<<<< HEAD
+=======
+  // Resalta en el nav la sección que está en el centro de la pantalla mientras se scrollea.
+  useEffect(() => {
+    const ids = ["top", ...NAV_LINKS.map((l) => l.href.slice(1))];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [t]);
+
+>>>>>>> origin/main
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -54,6 +82,7 @@ export default function Navbar() {
           </a>
 
           <nav className="hidden items-center gap-6 xl:flex">
+<<<<<<< HEAD
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -64,6 +93,30 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+=======
+            {NAV_LINKS.map((link) => {
+              const isActive = active === link.href.slice(1);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  data-cursor-hover
+                  className={`relative pb-1 font-mono text-[13px] transition-colors ${
+                    isActive ? "text-nexus-green" : "text-ink-muted hover:text-ink"
+                  }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] rounded-full bg-nexus-green shadow-glow-sm"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                </a>
+              );
+            })}
+>>>>>>> origin/main
           </nav>
 
           <div className="flex items-center gap-3">
@@ -110,7 +163,13 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
+<<<<<<< HEAD
                   className="border-b border-line py-3.5 font-display text-2xl text-ink"
+=======
+                  className={`border-b border-line py-3.5 font-display text-2xl transition-colors ${
+                    active === link.href.slice(1) ? "text-nexus-green" : "text-ink"
+                  }`}
+>>>>>>> origin/main
                 >
                   {link.label}
                 </motion.a>

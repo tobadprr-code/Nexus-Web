@@ -2,6 +2,10 @@ import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import LoadingScreen from "@/components/LoadingScreen";
 import Hero from "@/components/Hero";
+<<<<<<< HEAD
+=======
+import BusinessMatch from "@/components/BusinessMatch";
+>>>>>>> origin/main
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Projects from "@/components/Projects";
@@ -24,6 +28,10 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
+<<<<<<< HEAD
+=======
+        <BusinessMatch />
+>>>>>>> origin/main
         <About />
         <Services />
         <Projects />

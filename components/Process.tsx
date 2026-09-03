@@ -13,7 +13,11 @@ export default function Process() {
   const p = t.process;
 
   return (
+<<<<<<< HEAD
     <section id="proceso" className="relative py-28 sm:py-36">
+=======
+    <section id="proceso" className="relative py-24 sm:py-32">
+>>>>>>> origin/main
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

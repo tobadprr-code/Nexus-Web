@@ -2,11 +2,19 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+<<<<<<< HEAD
 import { ArrowUpRight, Car, type LucideIcon } from "lucide-react";
+=======
+import { ArrowUpRight, Car, Package, type LucideIcon } from "lucide-react";
+>>>>>>> origin/main
 import SectionTag from "./SectionTag";
 import TiltCard from "./TiltCard";
 import ProjectModal from "./ProjectModal";
 import BrandTree from "./BrandTree";
+<<<<<<< HEAD
+=======
+import ModuleComparisonTable from "./ModuleComparisonTable";
+>>>>>>> origin/main
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useProductFilter } from "@/lib/ProductFilterContext";
 import { INDUSTRY_ICON } from "@/lib/industries";
@@ -30,8 +38,15 @@ export type Project = {
   whatsappDemo?: readonly { from: string; text: string }[];
 };
 
+<<<<<<< HEAD
 // Orden: Nexus Gym, Nexus Secure, Nexus Kine, Nexus Repair, Nexus Finance, Nexus Importados
 // (tiene que matchear el orden de t.products.items en translations.ts)
+=======
+// Orden: Nexus Gym, Nexus Secure, Nexus Kine, Nexus Repair, Nexus Finance
+// (tiene que matchear el orden de t.products.items en translations.ts)
+// Nota: Nexus Repair es el servicio personal de reparación de celulares de Tobias
+// (no un producto que se vende a otros talleres), por eso tiene su propio badge.
+>>>>>>> origin/main
 const PRODUCTS_META = [
   {
     icon: INDUSTRY_ICON.fitness,
@@ -73,6 +88,7 @@ const PRODUCTS_META = [
     images: [],
     industry: "finanzas",
   },
+<<<<<<< HEAD
   {
     icon: INDUSTRY_ICON.comercio,
     statusColor: "text-nexus-rose bg-nexus-rose/10 border-nexus-rose/20",
@@ -81,6 +97,8 @@ const PRODUCTS_META = [
     images: [],
     industry: "comercio",
   },
+=======
+>>>>>>> origin/main
 ];
 
 const WEBS_META = [
@@ -93,6 +111,17 @@ const WEBS_META = [
     industry: "webs",
     link: "https://sistema-remiseria-yasi-travel.vercel.app/",
   },
+<<<<<<< HEAD
+=======
+  {
+    icon: Package,
+    statusColor: "text-nexus-rose bg-nexus-rose/10 border-nexus-rose/20",
+    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "WhatsApp API"],
+    accent: "rose" as const,
+    images: [],
+    industry: "webs",
+  },
+>>>>>>> origin/main
 ];
 
 const ACCENT_MAP = {
@@ -192,7 +221,11 @@ export default function Projects() {
   const PRODUCTS: Project[] = t.products.items.map((item, i) => ({
     ...item,
     ...PRODUCTS_META[i],
+<<<<<<< HEAD
     badge: t.products.badge,
+=======
+    badge: (item as { badge?: string }).badge ?? t.products.badge,
+>>>>>>> origin/main
   }));
 
   const WEBS: Project[] = t.nexusWebs.items.map((item, i) => ({
@@ -208,7 +241,11 @@ export default function Projects() {
   );
 
   return (
+<<<<<<< HEAD
     <section id="proyectos" className="relative py-28 sm:py-36">
+=======
+    <section id="proyectos" className="relative py-24 sm:py-32">
+>>>>>>> origin/main
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -252,6 +289,11 @@ export default function Projects() {
           ))}
         </div>
 
+<<<<<<< HEAD
+=======
+        <ModuleComparisonTable products={PRODUCTS} />
+
+>>>>>>> origin/main
         <ProjectGrid
           projects={filteredProducts}
           onSelect={setSelected}
