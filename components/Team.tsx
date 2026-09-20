@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { FaWhatsapp, FaGithub } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
@@ -41,9 +42,14 @@ export default function Team() {
               aria-hidden
             />
             <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border border-line bg-void">
-              <span className="font-display text-6xl font-semibold text-nexus-green">
-                TB
-              </span>
+              <Image
+                src="/team/tobias.jpg"
+                alt="Tobias Britez"
+                fill
+                sizes="(max-width: 1024px) 224px, 280px"
+                className="object-cover"
+                priority
+              />
               <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-nexus-green via-nexus-cyan to-nexus-purple" />
             </div>
           </div>
