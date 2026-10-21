@@ -65,14 +65,14 @@ export const metadata: Metadata = {
     title: "NEXUS Dev — Sistemas Inteligentes para Negocios que Crecen",
     description:
       "Sistemas de gestión a medida y automatizaciones con WhatsApp e IA para PyMEs argentinas.",
-    images: [{ url: "/logo-full.png", width: 1512, height: 907, alt: "NEXUS Dev" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "NEXUS Dev — Sistemas inteligentes para negocios que crecen" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "NEXUS Dev — Sistemas Inteligentes para Negocios que Crecen",
     description:
       "Sistemas de gestión a medida y automatizaciones con WhatsApp e IA para PyMEs argentinas.",
-    images: ["/logo-full.png"],
+    images: ["/og.png"],
   },
   icons: {
     icon: [
@@ -107,8 +107,17 @@ const jsonLd = {
     "@type": "Person",
     name: "Tobias Britez",
   },
-  areaServed: "AR",
+  areaServed: ["AR", "BR", "PY"],
   telephone: "+5493757644169",
+  email: "tobadprr@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Wanda",
+    addressRegion: "Misiones",
+    addressCountry: "AR",
+  },
+  knowsLanguage: ["es", "en", "pt"],
+  sameAs: ["https://github.com/tobadprr-code"],
 };
 
 export default function RootLayout({
@@ -121,6 +130,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <a href="#main-content" className="skip-link">
+          Saltar al contenido
+        </a>
         <LanguageProvider>
           <ProductFilterProvider>
             <CustomCursor />

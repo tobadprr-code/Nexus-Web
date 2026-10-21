@@ -175,3 +175,23 @@ textarea:focus-visible {
 .pulse-dot {
   animation: pulse-dot 2.2s ease-out infinite;
 }
+
+/* accesibilidad: link para saltar la navegación (solo visible al navegar con teclado) */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  background: #00ff9d;
+  color: #07080a;
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}

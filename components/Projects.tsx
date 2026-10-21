@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Car, MapPin, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, Car, CarFront, MapPin, Music, Radio, TreePine, type LucideIcon } from "lucide-react";
 import SectionTag from "./SectionTag";
 import TiltCard from "./TiltCard";
 import ProjectModal from "./ProjectModal";
@@ -86,7 +86,7 @@ const WEBS_META = [
     accent: "cyan" as const,
     images: ["/screenshots/yasi-travel-hero.png"],
     industry: "webs",
-    link: "https://sistema-remiseria-yasi-travel.vercel.app/",
+    link: "https://www.yasitravel.com/",
   },
   {
     icon: MapPin,
@@ -96,6 +96,48 @@ const WEBS_META = [
     images: [],
     industry: "webs",
     link: "https://malvinas-del-norte.vercel.app/",
+  },
+];
+
+// Orden: CabañasWeb, Teky Automotores, DJ Steven Rodriguez, DJ Angelo Esteche
+// (tiene que matchear el orden de t.webDemos.items en translations.ts)
+// Son demos de NEXUS Dev para ofrecer, no proyectos entregados a clientes.
+const DEMOS_META = [
+  {
+    icon: TreePine,
+    statusColor: "text-nexus-amber bg-nexus-amber/10 border-nexus-amber/20",
+    tech: ["HTML/CSS", "JavaScript", "WhatsApp API"],
+    accent: "amber" as const,
+    images: [],
+    industry: "demos",
+    link: "https://caba-aswebs.vercel.app/",
+  },
+  {
+    icon: CarFront,
+    statusColor: "text-nexus-rose bg-nexus-rose/10 border-nexus-rose/20",
+    tech: ["HTML/CSS", "JavaScript"],
+    accent: "rose" as const,
+    images: [],
+    industry: "demos",
+    link: "https://teky-automotores-demo.vercel.app/",
+  },
+  {
+    icon: Music,
+    statusColor: "text-nexus-purple bg-nexus-purple/10 border-nexus-purple/20",
+    tech: ["HTML/CSS", "JavaScript", "WhatsApp API"],
+    accent: "purple" as const,
+    images: [],
+    industry: "demos",
+    link: "https://demo-dj-steven.vercel.app/",
+  },
+  {
+    icon: Radio,
+    statusColor: "text-nexus-green bg-nexus-green/10 border-nexus-green/20",
+    tech: ["HTML/CSS", "JavaScript", "WhatsApp API"],
+    accent: "green" as const,
+    images: [],
+    industry: "demos",
+    link: "https://angelo-dj-demo.vercel.app/",
   },
 ];
 
@@ -205,6 +247,12 @@ export default function Projects() {
     badge: t.nexusWebs.badge,
   }));
 
+  const DEMOS: Project[] = t.webDemos.items.map((item, i) => ({
+    ...item,
+    ...DEMOS_META[i],
+    badge: t.webDemos.badge,
+  }));
+
   const filteredProducts = useMemo(
     () => (filter === "all" ? PRODUCTS : PRODUCTS.filter((p) => p.industry === filter)),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -286,6 +334,30 @@ export default function Projects() {
           projects={WEBS}
           onSelect={setSelected}
           viewCase={t.nexusWebs.viewCase}
+          columns="sm:grid-cols-2 lg:grid-cols-2"
+        />
+
+        <div className="my-20 slash-divider" />
+
+        {/* Demos por rubro */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-10 max-w-2xl"
+        >
+          <SectionTag>{t.webDemos.tag}</SectionTag>
+          <h2 className="text-balance font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
+            {t.webDemos.heading}
+          </h2>
+          <p className="mt-4 font-body text-ink-muted">{t.webDemos.subtitle}</p>
+        </motion.div>
+
+        <ProjectGrid
+          projects={DEMOS}
+          onSelect={setSelected}
+          viewCase={t.webDemos.viewCase}
           columns="sm:grid-cols-2 lg:grid-cols-2"
         />
       </div>
